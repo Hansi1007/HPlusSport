@@ -1,3 +1,4 @@
+using HPlusSportAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HPlusSportAPI.Controllers
@@ -8,20 +9,24 @@ namespace HPlusSportAPI.Controllers
     {
 
         private readonly ILogger<ProductsController> _logger;
+        private readonly ShopContext _shopContext;
 
-        public ProductsController(ILogger<ProductsController> logger)
+
+        public ProductsController(ILogger<ProductsController> logger, ShopContext shopContext)
         {
             _logger = logger;
             _logger.LogInformation("Ctor: ProductsController");
 
+            _shopContext = shopContext;
+            _shopContext.Database.EnsureCreated();
+
         }
                 
         [HttpGet]
-        public string GetProdut()
-        {
-            return "OK.";
+        public IEnumerable<Product> GetAllProducts()
+        { 
+            return _shopContext.Products.ToList();
         }
-
 
    
     }
