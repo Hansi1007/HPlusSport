@@ -3,3 +3,10 @@
 GET https://localhost:7284/products
 
 ### 
+
+GET https://localhost:7284/Products/5
+
+###
+
+GET https://localhost:7284/Products/100
+
