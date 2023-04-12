@@ -28,6 +28,9 @@ namespace HPlusSportAPI
 
             app.UseHttpsRedirection();
 
+            app.UseHttpLogging();
+            
+
             app.UseAuthorization();
 
 
