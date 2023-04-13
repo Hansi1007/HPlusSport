@@ -31,17 +31,30 @@ namespace HPlusSportAPI.Controllers
             return await _shopContext.Products.ToListAsync();
         }
 
-        [HttpGet("{Id}")]             
+        [HttpGet("{Id}")]
         public async Task<ActionResult<Product>> GetProductById(int Id)
         {
             var product = await _shopContext.Products.FindAsync(Id);
-            if(product == null)
+            if (product == null)
             {
-                return NotFound();  
+                return NotFound();
             }
             return Ok(product);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> PostProduct(Product product)
+        {
+            if (product == null)
+            {
+                return BadRequest();
+            }
+
+            _shopContext.Products.Add(product);
+            await _shopContext.SaveChangesAsync();
+
+            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+        }
 
     }
 }
