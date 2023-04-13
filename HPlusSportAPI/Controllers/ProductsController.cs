@@ -28,20 +28,6 @@ namespace HPlusSportAPI.Controllers
             return _shopContext.Products.ToList();
         }
 
-        /*
-        [HttpGet("{id}")]
-        public Product GetProductById(int id)
-        {
-            Product product = _shopContext.Products.Find(id);
-            if (product == null)
-            {
-                return new Product();
-            }
-            else
-                return product;
-
-        }
-        */
 
         [HttpGet("{Id}")]             
         public ActionResult<Product> GetProductById(int Id)
