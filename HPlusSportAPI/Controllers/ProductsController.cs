@@ -45,6 +45,8 @@ namespace HPlusSportAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> PostProduct(Product product)
         {
+            _logger.LogInformation("[HttPost] PostProduct");
+
             if (product == null)
             {
                 return BadRequest();
@@ -53,7 +55,10 @@ namespace HPlusSportAPI.Controllers
             _shopContext.Products.Add(product);
             await _shopContext.SaveChangesAsync();
 
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            return CreatedAtAction(
+                "GetProductById",
+                new { id = product.Id },
+                product);
         }
 
     }

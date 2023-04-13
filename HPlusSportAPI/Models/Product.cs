@@ -15,7 +15,7 @@ namespace HPlusSportAPI.Models
         public int CategoryId { get; set; }
 
         [JsonIgnore]
-        public virtual Category Category { get; set; } = null!;
+        public virtual Category? Category { get; set; } = null!;
 
     }
 }
