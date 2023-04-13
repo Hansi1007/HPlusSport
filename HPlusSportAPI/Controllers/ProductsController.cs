@@ -2,6 +2,8 @@ using HPlusSportAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+//Asynchrone APIs
+
 namespace HPlusSportAPI.Controllers
 {
     [ApiController]
